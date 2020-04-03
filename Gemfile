@@ -23,9 +23,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'factory_bot'
   gem 'faker'
+  gem 'guard'
+  gem 'guard-rspec'
 end
-
+gem "minitest"
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -34,10 +38,8 @@ group :development do
 end
 
 group :test do
-  gem 'shoulda-matchers', '2.5', require: false
-  gem 'factory_bot_rails'
+  gem 'capybara'
   gem 'database_cleaner'
-  gem 'json_spec'
-  gem 'rspec-rails'
-  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
