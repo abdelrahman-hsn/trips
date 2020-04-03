@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_000431) do
+ActiveRecord::Schema.define(version: 2020_04_03_183417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,26 @@ ActiveRecord::Schema.define(version: 2020_04_03_000431) do
     t.index ["name"], name: "index_drivers_on_name"
   end
 
+  create_table "full_trips", force: :cascade do |t|
+    t.string "city"
+    t.decimal "longitude", precision: 10, scale: 6
+    t.decimal "latitude", precision: 10, scale: 6
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_full_trips_on_trip_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.string "city"
+    t.integer "start_trip_id"
+    t.integer "end_trip_id"
+    t.integer "status", default: 0
+    t.boolean "ongoing"
+    t.integer "driver_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "full_trips", "trips"
 end
