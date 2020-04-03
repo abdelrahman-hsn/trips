@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+20.times do |i|
+  Driver.create(
+    email: Faker::Internet.email,
+    name: Faker::Name.name ,
+    city: Faker::Address.city,
+    phone_number: Faker::PhoneNumber.phone_number,
+    available: true
+  )
+end
+Trip.create(city: Faker::Address.city, start_trip_id: 1, end_trip_id: 2, status: 0, ongoing: true, driver_id: 1)
+Trip.create(city: Faker::Address.city, start_trip_id: 1, end_trip_id: 2, status: 0, ongoing: true, driver_id: 1)
+FullTrip.create(city: Faker::Address.city, longitude: 29.9797513, latitude: 32.5434502, trip_id: 1)
