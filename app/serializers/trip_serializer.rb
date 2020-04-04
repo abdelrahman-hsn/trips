@@ -1,30 +1,8 @@
 class TripSerializer < ActiveModel::Serializer
-  attributes :id, :city, :status, :driver, :start_trip, :end_trip, :full_trips_history
+  attributes :id, :city, :status, :driver, :full_trips_history # , :start_trip, :end_trip
 
   def driver
     instance_options[:without_serializer] ? object.driver : DriverSerializer.new(object.driver, without_serializer: true)
-  end
-
-  def start_trip
-    # start_trip = $redis.lrange("start_trip_#{object.id}", 0, -1)
-    
-    # if !start_trip.empty?
-    #   result = []
-    #   start_trip.each do |location| 
-    #     result.push(JSON.parse(location))
-    #   end
-    #   start_trip = result.flatten
-    # else
-    #   start_trip = object.full_trips.first
-    #   $redis.lpush("start_trip_#{object.id}", start_trip.to_json)
-    # end
-    # start_trip = object.full_trips.first
-
-    object.full_trips.first
-  end
-
-  def end_trip
-    object.full_trips.last
   end
 
   def full_trips_history
@@ -43,4 +21,27 @@ class TripSerializer < ActiveModel::Serializer
     end
     trip_history
   end
+
+  # This Func Get Start Location Trip But This Not Best Practice
+  # def start_trip
+  #   # start_trip = $redis.lrange("start_trip_#{object.id}", 0, -1)
+
+  #   # if !start_trip.empty?
+  #   #   result = []
+  #   #   start_trip.each do |location| 
+  #   #     result.push(JSON.parse(location))
+  #   #   end
+  #   #   start_trip = result.flatten
+  #   # else
+  #   #   start_trip = object.full_trips.first
+  #   #   $redis.lpush("start_trip_#{object.id}", start_trip.to_json)
+  #   # end
+  #   # start_trip = object.full_trips.first
+
+  #   object.full_trips.first
+  # end
+
+  # def end_trip
+  #   object.full_trips.last
+  # end
 end
