@@ -1,0 +1,1 @@
+$redis = Redis::Namespace.new('trip_app', redis: Redis.new)
