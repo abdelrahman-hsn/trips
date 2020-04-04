@@ -14,6 +14,6 @@
     available: true
   )
 end
-Trip.create(city: Faker::Address.city, start_trip_id: 1, end_trip_id: 2, status: 0, ongoing: true, driver_id: 1)
-Trip.create(city: Faker::Address.city, start_trip_id: 1, end_trip_id: 2, status: 0, ongoing: true, driver_id: 1)
+Trip.create(city: Faker::Address.city, status: 0, driver_id: 1)
+Trip.create(city: Faker::Address.city, status: 0, driver_id: 1)
 FullTrip.create(city: Faker::Address.city, longitude: 29.9797513, latitude: 32.5434502, trip_id: 1)

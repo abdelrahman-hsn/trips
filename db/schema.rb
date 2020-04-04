@@ -39,10 +39,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_183417) do
 
   create_table "trips", force: :cascade do |t|
     t.string "city"
-    t.integer "start_trip_id"
-    t.integer "end_trip_id"
     t.integer "status", default: 0
-    t.boolean "ongoing"
     t.integer "driver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
