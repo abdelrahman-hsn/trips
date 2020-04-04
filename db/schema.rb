@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2020_04_03_183417) do
 
   create_table "full_trips", force: :cascade do |t|
     t.string "city"
-    t.decimal "longitude", precision: 10, scale: 6
-    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude"
+    t.decimal "latitude"
     t.bigint "trip_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
