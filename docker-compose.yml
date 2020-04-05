@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DATABASE: Trips_development
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_ROOT_PASSWORD: root
+  redis:
+    image: redis
+  trip_app:
+    build: .
+    command: sh ./start.sh
+    volumes:
+      - .:/trips
+    restart: always
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      DB_NAME: Trips_development
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_HOST: db
+      DB_NAME_TEST: trip_app_test_db
