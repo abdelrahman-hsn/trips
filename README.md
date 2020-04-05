@@ -35,6 +35,7 @@ $ bundle exec sidekiq
 - [x] Write Unite Test whith Rspec
 - [x] Serializing API
 - [x] Optimization API Full Trip History Using sidekiq and Redis
+- [x] Docker
 
 ### Tabels
 
